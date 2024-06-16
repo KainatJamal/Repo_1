@@ -1,0 +1,844 @@
+import java.util.Scanner;
+public class StringComparison {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the first string: ");
+        String str1 = scanner.nextLine();
+        System.out.print("Enter the second string: ");
+        String str2 = scanner.nextLine();
+        if (str1.equals(str2)) {
+            System.out.println("The strings are equal.");
+        } else {
+            System.out.println("The strings are not equal.");
+        }
+        scanner.close();
+    }
+}
+
+
+import java.util.Scanner;
+public class NumberComparison {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the first number: ");
+        int number1 = scanner.nextInt();
+        System.out.print("Enter the second number: ");
+        int number2 = scanner.nextInt();
+        if (number1 == number2) {
+            System.out.println("The numbers are equal.");
+        } else {
+            System.out.println("The numbers are not equal.");
+        }
+        scanner.close();
+    }
+}
+
+
+import java.util.Scanner;
+public class ArrayTraversalWithInput {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the size of the array: ");
+        int size = scanner.nextInt();
+        int[] numbers = new int[size];
+        System.out.println("Enter the elements of the array:");
+        for (int i = 0; i < size; i++) {
+            System.out.print("Element at index " + i + ": ");
+            numbers[i] = scanner.nextInt();
+        }
+        System.out.println("\nUsing a for loop:");
+        for (int i = 0; i < numbers.length; i++) {
+            System.out.println("Element at index " + i + ": " + numbers[i]);
+        }
+        scanner.close();
+    }
+}
+
+
+import java.util.Scanner;
+public class ArraySearch {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the size of the array: ");
+        int size = scanner.nextInt();
+        int[] numbers = new int[size];
+        System.out.println("Enter the elements of the array:");
+        for (int i = 0; i < size; i++) {
+            System.out.print("Element at index " + i + ": ");
+            numbers[i] = scanner.nextInt();
+        }
+        System.out.print("Enter the element to search: ");
+        int searchElement = scanner.nextInt();
+        int index = linearSearch(numbers, searchElement);
+        if (index != -1) {
+            System.out.println("Element found at index " + index);
+        } else {
+            System.out.println("Element not found in the array.");
+        }
+        scanner.close();
+    }
+    static int linearSearch(int[] arr, int key) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == key) {
+                return i;
+            }
+        }
+        return -1; 
+    }
+}
+
+
+import java.util.Scanner;
+public class TwoDimensionalArrayInput {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the number of rows: ");
+        int rows = scanner.nextInt();
+        System.out.print("Enter the number of columns: ");
+        int columns = scanner.nextInt();
+        int[][] matrix = new int[rows][columns];
+        System.out.println("Enter the elements of the 2D array:");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                System.out.print("Element at position (" + i + ", " + j + "): ");
+                matrix[i][j] = scanner.nextInt();
+            }
+        }
+        System.out.println("\n2D Array:");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println(); 
+        }
+        scanner.close();
+    }
+}
+
+
+import java.util.*;
+class Sorting {
+   public static void printArray(int arr[]) {
+       for(int i=0; i<arr.length; i++) {
+           System.out.print(arr[i]+" ");
+       }
+       System.out.println();
+   }
+   public static void main(String args[]) {
+       int arr[] = {7, 8, 1, 3, 2};
+       //bubble sort
+       for(int i=0; i<arr.length-1; i++) {
+           for(int j=0; j<arr.length-i-1; j++) {
+               if(arr[j] > arr[j+1]) {
+                   //swap
+                   int temp = arr[j];
+                   arr[j] = arr[j+1];
+                   arr[j+1] = temp;
+               }
+           }
+       }
+       printArray(arr);
+   }
+}
+
+
+import java.util.*;
+class Sorting {
+   public static void printArray(int arr[]) {
+       for(int i=0; i<arr.length; i++) {
+           System.out.print(arr[i]+" ");
+       }
+       System.out.println();
+   }
+   public static void main(String args[]) {
+       int arr[] = {7, 8, 1, 3, 2};
+       //selection sort
+       for(int i=0; i<arr.length-1; i++) {
+           int smallest = i;
+           for(int j=i+1; j<arr.length; j++) {
+               if(arr[j] < arr[smallest]) {
+                   smallest = j;
+               }
+           }
+           //swap
+           int temp = arr[smallest];
+           arr[smallest] = arr[i];
+           arr[i] = temp;
+       }
+       printArray(arr);
+   }
+}
+
+
+import java.util.*;
+class Sorting {
+   public static void printArray(int arr[]) {
+       for(int i=0; i<arr.length; i++) {
+           System.out.print(arr[i]+" ");
+       }
+       System.out.println();
+   }
+   public static void main(String args[]) {
+       int arr[] = {7, 8, 1, 3, 2};
+       //insertion sort
+       for(int i=1; i<arr.length; i++) {
+           int current = arr[i];
+           int j = i - 1;
+               while(j >= 0 && arr[j] > current) {
+                   //Keep swapping
+                   arr[j+1] = arr[j];
+                   j--;
+               }
+           arr[j+1] = current;
+       }
+       printArray(arr);
+   }
+}
+
+
+public class BinSearch {
+    public static void main(String[] args) {
+        int array[]={34, 87, 99, 100, 101};
+        int Li=0;
+        int Hi=array.length-1;
+        int Mi=(Li+Hi)/2;
+        int Items = 100;
+        while(Li<=Hi){
+            if(array[Mi]==Items){
+                System.out.println("Item found at "+Mi+" index: ");
+                break;
+            }
+            if(array[Mi]<Items){
+                Li=Mi+1;
+            }
+            else{
+                Hi=Mi-1;
+            }
+            Mi=(Li+Hi)/2;
+        }
+        if(Li>Hi){
+            System.out.println("Item not found.");
+            }
+        }
+    }
+
+
+import java.util.Scanner;
+class Student {
+    String name;
+    int RollNumber;
+    public Student(String name, int RollNumber) {
+        this.name = name;
+        this.RollNumber = RollNumber;
+    }
+}
+class Node {
+    Student data;
+    Node next;
+    public Node(Student data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+class StudentLinkedList {
+    private Node head;
+    public void insert(Student student) {
+        Node newNode = new Node(student);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node temp = head;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            temp.next = newNode;
+        }
+    }
+    public void viewList() {
+        Node temp = head;
+        while (temp != null) {
+            System.out.println("Name: " + temp.data.name + ", Roll Number: " + temp.data.RollNumber);
+            temp = temp.next;
+        }
+    }
+    public void insertAtPosition(int position, Student student) {
+        Node newNode = new Node(student);
+        if (position == 0) {
+            newNode.next = head;
+            head = newNode;
+        } else {
+            Node temp = head;
+            for (int i = 0; i < position - 1 && temp != null; i++) {
+                temp = temp.next;
+            }
+            if (temp != null) {
+                newNode.next = temp.next;
+                temp.next = newNode;
+            } else {
+                System.out.println("Invalid position");
+            }
+        }
+    }
+    public boolean search(String name) {
+        Node temp = head;
+        while (temp != null) {
+            if (temp.data.name.equals(name)) {
+                return true;
+            }
+            temp = temp.next;
+        }
+        return false;
+    }
+    public void delete(String name) {
+        Node current = head;
+        Node previous = null;
+        while (current != null && !current.data.name.equals(name)) {
+            previous = current;
+            current = current.next;
+        }
+        if (current == null) {
+            System.out.println("Record not found.");
+            return;
+        }
+        if (previous == null) {
+            head = current.next;
+        } else {
+            previous.next = current.next;
+        }
+        System.out.println("Record deleted successfully.");
+    }
+}
+public class StudentsRecord {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        StudentLinkedList studentList = new StudentLinkedList();
+
+        for (int i = 1; i <= 10; i++) {
+            Student student = new Student("Student" + i, i);
+            studentList.insert(student);
+        }
+        char choice;
+        do {
+            System.out.println("Options:");
+            System.out.println("a. View list");
+            System.out.println("b. Insert at position");
+            System.out.println("c. Search for a student");
+            System.out.println("d. Delete a student");
+            System.out.println("e. Exit");
+            System.out.print("Enter your choice: ");
+            choice = sc.next().charAt(0);
+            switch (choice) {
+                case 'a':
+                    System.out.println("\nStudent List:");
+                    studentList.viewList();
+                    break;
+                case 'b':
+                    System.out.print("Enter position to insert (0-9): ");
+                    int position = sc.nextInt();
+                    if (position >= 0 && position < 10) {
+                        System.out.print("Enter student name: ");
+                        String name = sc.next();
+                        System.out.print("Enter roll number: ");
+                        int rollNumber = sc.nextInt();
+                        studentList.insertAtPosition(position, new Student(name, rollNumber));
+                        System.out.println("Student inserted at position " + position);
+                        studentList.viewList();
+                    } else {
+                        System.out.println("Invalid position.");
+                    }
+                    break;
+                case 'c':
+                    System.out.print("Enter student name to search: ");
+                    String searchName = sc.next();
+                    if (studentList.search(searchName)) {
+                        System.out.println("Student found.");
+                    } else {
+                        System.out.println("Student not found.");
+                    }
+                    break;
+                case 'd':
+                    System.out.print("Enter student name to delete: ");
+                    String deleteName = sc.next();
+                    studentList.delete(deleteName);
+                    System.out.println("Student deleted.");
+                    studentList.viewList();
+                    break;
+                case 'e':
+                    System.out.println("Exiting the program.");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please enter a valid option.");
+                    break;
+            }
+        } while (choice != 'e');
+        sc.close();
+    }
+}
+
+
+class Node {
+    String data;
+    Node next;
+    public Node(String data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+class LinkedList {
+    Node head;
+    public LinkedList() {
+        this.head = null;
+    }
+    public boolean isEmpty() {
+        return head == null;
+    }
+    public void addNode(String data) {
+        Node newNode = new Node(data);
+        if (isEmpty()) {
+            head = newNode;
+        } else {
+            Node current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+    }
+}
+public class CheckEmptyLinkedList {
+    public static void main(String[] args) {
+        LinkedList linkedList = new LinkedList();
+        System.out.println("Is the linked list empty? " + .isEmpty());
+        linkedList.addNode("Node 1");
+        linkedList.addNode("Node 2");
+        linkedList.addNode("Node 3");
+                System.out.println("Is the linked list empty? " + linkedList.isEmpty());
+    }
+}
+
+
+class Node {
+    String data;
+    Node next;
+    public Node(String data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+class LinkedList {
+    Node head;
+    public LinkedList() {
+        this.head = null;
+    }
+    public void addNode(String data) {
+       Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+    }
+    public void reverseLinkedList() {
+        Node prev = null;
+        Node current = head;
+        Node nextNode;
+        while (current != null) {
+            nextNode = current.next;
+            current.next = prev;
+            prev = current;
+            current = nextNode;
+        }
+        head = prev;
+    }
+    public void displayLinkedList() {
+        Node current = head;
+        System.out.print("Linked List: ");
+        while (current != null) {
+            System.out.print(current.data + " ");
+            current = current.next;
+        }
+        System.out.println();
+    }
+}
+public class ReverseLinkedListExample {
+    public static void main(String[] args) {
+        LinkedList linkedList = new LinkedList();
+        linkedList.addNode("Element1");
+        linkedList.addNode("Element2");
+        linkedList.addNode("Element3");
+        linkedList.addNode("Element4");
+        linkedList.displayLinkedList();
+        linkedList.reverseLinkedList();
+        linkedList.displayLinkedList();
+    }
+}
+
+
+public class HashTableExample {
+    static final int TABLE_SIZE = 10;
+    String[] hashTable;
+    public HashTableExample() {
+        hashTable = new String[TABLE_SIZE];
+    }
+    private int hashFunction(String key) {
+        int hash = key.hashCode();
+        return Math.abs(hash % TABLE_SIZE);
+    }
+    public void insert(String element) {
+        int index = hashFunction(element);
+        while (hashTable[index] != null) {
+            index = (index + 1) % TABLE_SIZE;
+        }
+        hashTable[index] = element;
+    }
+    public boolean search(String key) {
+        int index = hashFunction(key);
+        while (hashTable[index] != null) {
+            if (hashTable[index].equals(key)) {
+                return true;
+            }
+            index = (index + 1) % TABLE_SIZE;
+        }
+
+        return false; 
+    }
+    public static void main(String[] args) {
+        HashTableExample hashTableExample = new HashTableExample();
+        hashTableExample.insert("Apple");
+        hashTableExample.insert("Banana");
+        hashTableExample.insert("Orange");
+        hashTableExample.insert("Grapes");
+        String searchKey = "Banana";
+        if (hashTableExample.search(searchKey)) {
+            System.out.println(searchKey + " found in the hash table.");
+        } else {
+            System.out.println(searchKey + " not found in the hash table.");
+        }
+    }
+}
+
+
+import java.util.ArrayList;
+public class StackAL {
+    static class Stack {
+        ArrayList<Integer> list = new ArrayList<>();
+        public void push(int data) {
+            list.add(data);
+        }
+        public boolean isEmpty() {
+            return list.size() == 0;
+        }
+        public int pop() {
+            if(isEmpty()) {
+                return -1;
+            }
+            int top = list.remove(list.size()-1);
+            return top;
+        }
+        public int peek() {
+            if(isEmpty()) {
+                return -1;
+            }
+            return list.get(list.size()-1);
+        }
+    }
+    public static void main(String args[]) {
+        Stack stack = new Stack();
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        stack.push(4);
+        while(!stack.isEmpty()) {
+            System.out.println(stack.peek());
+            stack.pop();
+        }
+    }
+}
+
+
+public class StackDS {
+    private static class Node {
+        int data;
+        Node next;
+        Node(int data) {
+            this.data = data;
+            next = null;
+        }
+    }
+    static class Stack {
+        public static Node head = null;
+        public static void push(int data) {
+            Node newNode = new Node(data);
+            if(head == null) {
+                head = newNode;
+                return;
+            }
+            newNode.next = head;
+            head = newNode;
+        }
+        public static boolean isEmpty() {
+            return head == null;
+        }
+        public static int pop() {
+            if(isEmpty()) {
+                return -1;
+            }
+            Node top = head;
+            head = head.next;
+            return top.data;
+        }
+        public static int peek() {
+            if(isEmpty()) {
+                return -1;
+            }
+            Node top = head;
+            return top.data;
+        }
+    }
+    public static void main(String args[]) {
+        Stack stack = new Stack();
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        stack.push(4);
+        while(!stack.isEmpty()) {
+            System.out.println(stack.peek());
+            stack.pop();
+        }
+    }
+}
+
+
+public class QueueB {
+   static class Queue {
+       static int arr[];
+       static int size;
+       static int rear;
+       Queue(int size) {
+           this.size = size;
+           arr = new int[size];
+           rear = -1;
+       }
+       public static boolean isEmpty() {
+           return rear == -1;
+       }
+       public static boolean isFull() {
+           return rear == size-1;
+       }
+       public static void add(int data) {
+           if(isFull()) {
+               System.out.println("Overflow");
+               return;
+           }
+           arr[++rear] = data;
+       }
+       public static int remove() {
+           if(isEmpty()) {
+               System.out.println("empty queue");
+               return -1;
+           }
+           int front = arr[0];
+           for(int i=0; i<rear; i++) {
+               arr[i] = arr[i+1];
+           }
+	     rear–;	
+           return front;
+       }
+       public static int peek() {
+           if(isEmpty()) {
+               System.out.println("empty queue");
+               return -1;
+           }
+           return arr[0];
+       }
+   }
+   public static void main(String args[]) {
+       Queue q = new Queue(5);
+       q.add(1);
+       q.add(2);
+       q.add(3);
+       System.out.println(q.remove());
+       System.out.println(q.peek());
+   }
+}
+
+
+public class QueueB {
+   static class Node {
+       int data;
+       Node next;
+       Node(int data) {
+           this.data = data;
+           next = null;
+       }
+   }
+   static class Queue {
+       static Node head = null;
+       static Node tail = null;
+       public static boolean isEmpty() {
+           return head == null && tail == null;
+       }
+       public static void add(int data) {
+           Node newNode = new Node(data);
+           if(isEmpty()) {
+               tail = head = newNode;
+           } else {
+               tail.next = newNode;
+               tail = newNode;
+           }
+       }
+       public static int remove() {
+           if(isEmpty()) {
+               System.out.println("empty queue");
+               return -1;
+           }
+           int front = head.data;
+           if(head == tail) {
+               tail = null;
+           }
+           head = head.next;
+           return front;
+       }
+       public static int peek() {
+           if(isEmpty()) {
+               System.out.println("empty queue");
+               return -1;
+           }
+           return head.data;
+       }
+   }
+   public static void main(String args[]) {
+       Queue q = new Queue();
+       q.add(1);
+       q.add(2);
+       q.add(3);
+       q.add(4);
+       q.add(5);
+       while(!q.isEmpty()) {
+           System.out.println(q.peek());
+           q.remove();
+       }
+   }
+}
+
+
+class BinaryTree {
+    static class Node {
+        char data;
+        Node left, right;
+        public Node(char item) {
+            data = item;
+            left = right = null;
+        }
+    }
+    Node root;
+    public BinaryTree() {
+        root = null;
+    }
+    private void preOrder(Node node) {
+        if (node != null) {
+            System.out.print(node.data + " ");
+            preOrder(node.left);
+            preOrder(node.right);
+        }
+    }
+    public void preOrderTraversal() {
+        preOrder(root);
+        System.out.println();
+    }
+    private void inOrder(Node node) {
+        if (node != null) {
+            inOrder(node.left);
+            System.out.print(node.data + " ");
+            inOrder(node.right);
+        }
+    }
+    public void inOrderTraversal() {
+        inOrder(root);
+        System.out.println();
+    }
+    private void postOrder(Node node) {
+        if (node != null) {
+            postOrder(node.left);
+            postOrder(node.right);
+            System.out.print(node.data + " ");
+        }
+    }
+    public void postOrderTraversal() {
+        postOrder(root);
+        System.out.println();
+    }
+}
+public class BinaryTraversal {
+    public static void main(String[] args) {
+        BinaryTree tree = new BinaryTree();
+        tree.root = new BinaryTree.Node('D');
+        tree.root.left = new BinaryTree.Node('B');
+        tree.root.right = new BinaryTree.Node('G');
+        tree.root.left.left = new BinaryTree.Node('A');
+        tree.root.left.right = new BinaryTree.Node('C');
+        tree.root.right.left = new BinaryTree.Node('E');
+        tree.root.right.right = new BinaryTree.Node('H');
+        System.out.println("Pre-order traversal:");
+        tree.preOrderTraversal();
+        System.out.println("In-order traversal:");
+        tree.inOrderTraversal();
+        System.out.println("Post-order traversal:");
+        tree.postOrderTraversal();
+    }
+}
+
+
+class Node {
+    int key;
+    Node left, right;
+    public Node(int item) {
+        key = item;
+        left = right = null;
+    }
+}
+public class BinarySearchTree {
+    Node root;
+    BinarySearchTree() {
+        root = null;
+    }
+    void insert(int key) {
+        root = insertRec(root, key);
+    }
+    Node insertRec(Node root, int key) {
+        if (root == null) {
+            root = new Node(key);
+            return root;
+        }
+        if (key < root.key)
+            root.left = insertRec(root.left, key);
+        else if (key > root.key)
+            root.right = insertRec(root.right, key);
+        return root;
+    }
+    void postorder() {
+        postorderRec(root);
+    }
+    void postorderRec(Node root) {
+        if (root != null) {
+            postorderRec(root.left);
+            postorderRec(root.right);
+            System.out.print(root.key + " ");
+        }
+    }
+    public static void main(String[] args) {
+        BinarySearchTree tree = new BinarySearchTree();
+        int[] elements = {45, 15, 79, 90, 10, 55, 12, 20, 50};
+        for (int element : elements) {
+            tree.insert(element);
+        }
+        System.out.println("Postorder traversal: ");
+        tree.postorder();
+    }
+}
+
+

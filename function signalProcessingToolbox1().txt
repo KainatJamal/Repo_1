@@ -1,0 +1,223 @@
+function signalProcessingToolbox1()
+
+    % Main function
+    function signalProcessingToolbox()
+        disp("Welcome to Signal Processing Toolbox");
+        while true
+            disp("************************************************");
+            disp("1. Convolution");
+            disp("2. Even and Odd Parts");
+            disp("3. Fourier Transform");
+            disp("4. Exit");
+            disp("************************************************");
+            choice = input("Enter your choice: ");
+            switch choice
+                case 1
+                    convolutionMenu();
+                case 2
+                    evenOddMenu();
+                case 3
+                    fourierTransformMenu();
+                case 4
+                    disp("Exiting program...");
+                    return;
+                otherwise
+                    disp("Invalid choice!");
+            end
+            continueChoice = input("Would you like to continue? (yes/no): ", 's');
+            if strcmpi(continueChoice, 'no')
+                disp("Exiting program...");
+                return;
+            elseif ~strcmpi(continueChoice, 'yes')
+                disp("Invalid choice! Exiting program...");
+                return;
+            end
+        end
+    end
+
+    % Convolution Menu
+    function convolutionMenu()
+        disp("************************************************");
+        disp("Choose the type of convolution:");
+        disp("1. Custom signals");
+        disp("2. Predefined example 1: x[n] = n^2, -2 <= n <= 2 and h[n] = 1/(n+2), -1 <= n <= 3");
+        disp("3. Predefined example 2: x[n] = sqrt(1/n), 1 <= n <= 5 and h[n] = 0.8^n, 0 <= n <= 10");
+        disp("4. Predefined example 3: x[n] = [3 + 2j, 1 + j, 4 + 6j] and h[n] = [1 - 2j, j, 3 - 2j, 2]");
+        disp("************************************************");
+        choice = input("Enter your choice: ");
+        
+        switch choice
+            case 1
+                signal1 = input("Enter signal 1 (as a vector): ");
+                signal2 = input("Enter signal 2 (as a vector): ");
+            case 2
+                n1 = -2:2;
+                signal1 = n1.^2;
+                n2 = -1:3;
+                signal2 = 1./(n2 + 2);
+            case 3
+                n1 = 1:5;
+                signal1 = sqrt(1./n1);
+                n2 = 0:10;
+                signal2 = 0.8.^n2;
+            case 4
+                signal1 = [3 + 2j, 1 + j, 4 + 6j];
+                signal2 = [1 - 2j, j, 3 - 2j, 2];
+            otherwise
+                disp("Invalid choice!");
+                return;
+        end
+        
+        result = conv(signal1, signal2);
+        disp("Convolution result:");
+        disp(result);
+        
+        % Plot original signals and the result
+        figure;
+        subplot(3, 1, 1);
+        stem(0:length(signal1)-1, signal1, 'b', 'filled');
+        title('Signal 1');
+        xlabel('n');
+        ylabel('Amplitude');
+        grid on;
+        
+        subplot(3, 1, 2);
+        stem(0:length(signal2)-1, signal2, 'r', 'filled');
+        title('Signal 2');
+        xlabel('n');
+        ylabel('Amplitude');
+        grid on;
+        
+        subplot(3, 1, 3);
+        stem(0:length(result)-1, result, 'g', 'filled');
+        title('Convolution Result');
+        xlabel('n');
+        ylabel('Amplitude');
+        grid on;
+    end
+
+    % Even and Odd Parts Menu
+    function evenOddMenu()
+        disp("************************************************");
+        disp("Choose the type of input:");
+        disp("1. Enter signal as a vector");
+        disp("2. Enter signal as an expression");
+        disp("3. Predefined example 1: sin(n)");
+        disp("4. Predefined example 2: cos(n)");
+        disp("5. Predefined example 3: tan(n)");
+        disp("************************************************");
+        choice = input("Enter your choice: ");
+        
+        switch choice
+            case 1
+                signal = input("Enter signal (as a vector): ");
+                n = 0:length(signal)-1;
+            case 2
+                expr = input("Enter the expression for signal (use 'n' as the variable): ", 's');
+                n = 0:9; % Default range for evaluation
+                signal = eval(expr);
+            case 3
+                n = 0:9;
+                signal = sin(n);
+            case 4
+                n = 0:9;
+                signal = cos(n);
+            case 5
+                n = 0:9;
+                signal = tan(n);
+            otherwise
+                disp("Invalid choice!");
+                return;
+        end
+
+        evenPart = 0.5 * (signal + fliplr(signal));
+        oddPart = 0.5 * (signal - fliplr(signal));
+
+        if isequal(signal, evenPart)
+            disp("The signal is even.");
+        elseif isequal(signal, oddPart)
+            disp("The signal is odd.");
+        else
+            disp("The signal is neither even nor odd.");
+        end
+        
+        % Plot original signal
+        figure;
+        subplot(3, 1, 1);
+        stem(n, signal, 'b', 'filled');
+        title('Original Signal');
+        xlabel('n');
+        ylabel('Amplitude');
+        grid on;
+
+        subplot(3, 1, 2);
+        stem(n, evenPart, 'r', 'filled');
+        title('Even Part');
+        xlabel('n');
+        ylabel('Amplitude');
+        grid on;
+
+        subplot(3, 1, 3);
+        stem(n, oddPart, 'g', 'filled');
+        title('Odd Part');
+        xlabel('n');
+        ylabel('Amplitude');
+        grid on;
+    end
+
+    % Fourier Transform Menu
+    function fourierTransformMenu()
+        disp("************************************************");
+        disp("Choose the type of input:");
+        disp("1. Enter signal as a vector");
+        disp("2. Enter signal as an expression");
+        disp("3. Predefined example 1: sin(2*pi*n/10)");
+        disp("4. Predefined example 2: exp(-n/10) .* sin(2*pi*n/10)");
+        disp("5. Predefined example 3: sin(2*pi*n/20)");
+        disp("************************************************");
+        choice = input("Enter your choice: ");
+        
+        switch choice
+            case 1
+                signal = input("Enter signal (as a vector): ");
+                n = 0:length(signal)-1;
+            case 2
+                expr = input("Enter the expression for signal (use 'n' as the variable): ", 's');
+                n = 0:9; % Default range for evaluation
+                signal = eval(expr);
+            case 3
+                n = 0:9;
+                signal = sin(2*pi*n/10);
+            case 4
+                n = 0:9;
+                signal = exp(-n/10) .* sin(2*pi*n/10);
+            case 5
+                n = 0:19;
+                signal = sin(2*pi*n/20);
+            otherwise
+                disp("Invalid choice!");
+                return;
+        end
+
+        fft_signal = fft(signal);
+        disp("Fourier Transform result:");
+        disp(fft_signal);
+        
+        % Plot the waveform-like graph for Fourier Transform
+        Fs = 1; % Sampling frequency (assuming unit sampling interval)
+        N = length(signal); % Number of samples
+        f = (-N/2:N/2-1) * Fs / N; % Frequency range
+        fft_signal_shifted = fftshift(fft_signal); % Shift FFT to center
+        magnitude_spectrum = abs(fft_signal_shifted); % Magnitude spectrum
+
+        figure;
+        plot(f, magnitude_spectrum, 'b');
+        title('Fourier Transform');
+        xlabel('Frequency (Hz)');
+        ylabel('Magnitude');
+        grid on;
+    end
+
+    signalProcessingToolbox(); % Call the main function to start the program
+    disp("Thank you for using the Signal Processing Toolbox!");
+end
